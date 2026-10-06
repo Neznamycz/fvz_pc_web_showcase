@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="bg" cx="0.5" cy="0.45" r="0.85"><stop offset="0" stop-color="#0f1d2a"/><stop offset="1" stop-color="#05080d"/></radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#3aa0ff" stroke-opacity="0.08" stroke-width="1"/></pattern>
+    <pattern id="grid2" width="300" height="300" patternUnits="userSpaceOnUse"><path d="M300 0H0V300" fill="none" stroke="#3aa0ff" stroke-opacity="0.14" stroke-width="1.5"/></pattern>
+    <filter id="blur"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <rect width="1920" height="1080" fill="url(#grid2)"/>
+  <g fill="none" stroke="#3aa0ff" stroke-opacity="0.13" stroke-width="1.4">
+    <path d="M-50 820 C 300 700, 520 900, 820 760 S 1300 600, 1980 720"/><path d="M-50 860 C 300 740, 520 940, 820 800 S 1300 640, 1980 760"/>
+    <path d="M-50 900 C 300 780, 520 980, 820 840 S 1300 680, 1980 800"/>
+    <path d="M200 -20 C 260 200, 120 380, 260 560 S 420 900, 360 1100"/><path d="M1500 -20 C 1440 240, 1620 420, 1540 640 S 1460 940, 1560 1100"/>
+  </g>
+  <g transform="translate(1180 430)">
+    <circle r="210" fill="none" stroke="#3aa0ff" stroke-opacity="0.18" stroke-width="2"/>
+    <circle r="140" fill="none" stroke="#3aa0ff" stroke-opacity="0.14" stroke-width="1.5"/>
+    <circle r="70" fill="none" stroke="#3aa0ff" stroke-opacity="0.12"/>
+    <path d="M0 0 L210 0 A210 210 0 0 0 148 -148 Z" fill="#3aa0ff" opacity="0.07"/>
+    <circle cx="96" cy="-62" r="6" fill="#f1c40f"/><circle cx="96" cy="-62" r="14" fill="#f1c40f" opacity="0.25" filter="url(#blur)"/>
+    <circle cx="-120" cy="58" r="5" fill="#e74c3c"/><circle cx="40" cy="150" r="4" fill="#2ecc71"/>
+  </g>
+  <text x="120" y="980" font-family="JetBrains Mono, Consolas, monospace" font-size="15" letter-spacing="3" fill="#3aa0ff" opacity="0.45">LOS SANTOS · 34.0522 N · 118.2437 W</text>
+</svg>

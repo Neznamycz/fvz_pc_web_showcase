@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070a12"/><stop offset="0.55" stop-color="#131a2b"/><stop offset="0.8" stop-color="#2b2236"/><stop offset="1" stop-color="#3a2a22"/>
+    </linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f39c12" stop-opacity="0"/><stop offset="1" stop-color="#f39c12" stop-opacity="0.22"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="30"/></filter>
+    <pattern id="win" width="14" height="18" patternUnits="userSpaceOnUse"><rect x="3" y="4" width="5" height="7" fill="#f6d36b" opacity="0.5"/></pattern>
+    <pattern id="win2" width="18" height="22" patternUnits="userSpaceOnUse"><rect x="4" y="5" width="6" height="8" fill="#9fc6ff" opacity="0.28"/></pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <g fill="#ffffff" opacity="0.5">
+    <circle cx="210" cy="120" r="1.2"/><circle cx="480" cy="80" r="1"/><circle cx="760" cy="160" r="1.4"/><circle cx="1110" cy="70" r="1"/><circle cx="1350" cy="140" r="1.2"/>
+    <circle cx="1620" cy="95" r="1"/><circle cx="1800" cy="190" r="1.3"/><circle cx="960" cy="230" r="0.9"/><circle cx="330" cy="260" r="1"/><circle cx="1500" cy="260" r="0.9"/>
+  </g>
+  <circle cx="1530" cy="210" r="60" fill="#f4ecd8" opacity="0.85"/>
+  <circle cx="1530" cy="210" r="160" fill="#f4ecd8" opacity="0.08" filter="url(#blur)"/>
+  <rect y="640" width="1920" height="440" fill="url(#haze)"/>
+  <g fill="#0b0e16">
+    <rect x="0" y="720" width="120" height="360"/><rect x="110" y="660" width="90" height="420"/><rect x="190" y="760" width="140" height="320"/>
+    <rect x="320" y="560" width="110" height="520"/><rect x="420" y="700" width="160" height="380"/><rect x="570" y="480" width="120" height="600"/>
+    <rect x="600" y="440" width="60" height="40"/><rect x="680" y="640" width="150" height="440"/><rect x="820" y="580" width="100" height="500"/>
+    <rect x="910" y="390" width="140" height="690"/><rect x="960" y="340" width="40" height="50"/><rect x="1040" y="620" width="120" height="460"/>
+    <rect x="1150" y="520" width="150" height="560"/><rect x="1290" y="680" width="110" height="400"/><rect x="1390" y="450" width="130" height="630"/>
+    <rect x="1510" y="700" width="160" height="380"/><rect x="1660" y="590" width="110" height="490"/><rect x="1760" y="730" width="160" height="350"/>
+  </g>
+  <g>
+    <rect x="330" y="580" width="90" height="480" fill="url(#win)"/><rect x="580" y="500" width="100" height="560" fill="url(#win2)"/>
+    <rect x="920" y="410" width="120" height="650" fill="url(#win)"/><rect x="1160" y="540" width="130" height="520" fill="url(#win2)"/>
+    <rect x="1400" y="470" width="110" height="590" fill="url(#win)"/><rect x="1670" y="610" width="90" height="450" fill="url(#win2)"/>
+  </g>
+  <g fill="#05070b"><rect x="0" y="960" width="1920" height="120"/></g>
+  <g opacity="0.9">
+    <circle cx="300" cy="985" r="5" fill="#e74c3c"/><circle cx="318" cy="985" r="5" fill="#3498db"/>
+    <circle cx="300" cy="985" r="26" fill="#e74c3c" opacity="0.2" filter="url(#blur)"/><circle cx="318" cy="985" r="26" fill="#3498db" opacity="0.2" filter="url(#blur)"/>
+  </g>
+</svg>

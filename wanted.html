@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Most wanted</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 720px; overflow: hidden; background: #0b0d11; color: #eef1f5; font-family: Inter, Arial, sans-serif; }
+    .head { height: 96px; display: flex; align-items: center; gap: 22px; padding: 0 48px; background: linear-gradient(90deg, #a8810a, #f1c40f 60%, #f5d76e); color: #111; }
+    .head .t { font-size: 54px; font-weight: 900; letter-spacing: 0.08em; }
+    .head .n { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 600; }
+    .stage { position: absolute; top: 96px; left: 0; right: 0; bottom: 62px; display: flex; align-items: center; padding: 34px 48px; gap: 48px; }
+    .photo { width: 380px; height: 470px; flex-shrink: 0; border-radius: 14px; background: #1b2129 center / cover no-repeat; border: 4px solid #2a323d;
+        display: grid; place-items: center; font-size: 160px; font-weight: 900; color: #3a4350; }
+    .info { flex: 1; min-width: 0; max-height: 100%; overflow: hidden; }
+    .name { font-size: 70px; font-weight: 900; line-height: 1.02; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .no { font-family: 'JetBrains Mono', monospace; font-size: 26px; color: #f1c40f; margin-top: 14px; }
+    .charges { margin-top: 26px; display: flex; flex-direction: column; gap: 10px; }
+    .charges div { font-size: 32px; font-weight: 600; color: #c8ced6; }
+    .charges div::before { content: '▸ '; color: #f1c40f; }
+    .row { display: flex; gap: 18px; margin-top: 30px; flex-wrap: wrap; }
+    .tag { font-size: 30px; font-weight: 800; padding: 10px 22px; border-radius: 10px; }
+    .reward { background: #1e7a46; color: #fff; }
+    .danger { background: #c0392b; color: #fff; animation: pulse 1.4s ease-in-out infinite; }
+    .plate { background: #1b2129; border: 2px solid #3a4350; font-family: 'JetBrains Mono', monospace; }
+    .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 62px; display: flex; align-items: center; padding: 0 48px; background: #151a21;
+        font-size: 24px; color: #9aa4b1; border-top: 2px solid #232a33; }
+    .dots { margin-left: auto; display: flex; gap: 10px; }
+    .dots i { width: 14px; height: 14px; border-radius: 50%; background: #3a4350; }
+    .dots i.on { background: #f1c40f; }
+    .empty { position: absolute; inset: 96px 0 62px; display: grid; place-items: center; font-size: 40px; color: #6b7684; }
+    .fade { animation: fade 0.6s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: none; } }
+    @keyframes pulse { 50% { opacity: 0.6; } }
+</style>
+</head>
+<body>
+    <div class="head"><div class="t" id="title">MOST WANTED</div><div class="n" id="count"></div></div>
+    <div id="view"></div>
+    <div class="foot"><span id="call"></span><div class="dots" id="dots"></div></div>
+<script>
+    let list = [], text = {}, idx = 0, timer, rotate = 8, currency = '$';
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    const safeUrl = u => /^(https?:|nui:)/.test(u || '') ? u.replace(/["'()\\]/g, '') : null;
+    function render() {
+        const v = document.getElementById('view');
+        document.getElementById('title').textContent = text.wanted_title || 'MOST WANTED';
+        document.getElementById('call').textContent = text.wanted_call || '';
+        document.getElementById('count').textContent = list.length ? `${idx + 1} / ${list.length}` : '';
+        document.getElementById('dots').innerHTML = list.map((_, i) => `<i class="${i === idx ? 'on' : ''}"></i>`).join('');
+        if (!list.length) { v.innerHTML = `<div class="empty">${esc(text.wanted_none || '')}</div>`; return; }
+        const w = list[idx];
+        const photo = safeUrl(w.photo);
+        const initials = String(w.name || '?').split(/\s+/).slice(0, 2).map(p => p[0] || '').join('').toUpperCase();
+        v.innerHTML = `<div class="stage fade"><div class="photo" ${photo ? `style="background-image:url('${photo}')"` : ''}>${photo ? '' : esc(initials)}</div>
+            <div class="info"><div class="name">${esc(w.name)}</div><div class="no">${esc(w.number)}</div>
+            <div class="charges">${(w.charges || []).map(c => `<div>${esc(c)}</div>`).join('') || (w.title && w.title !== w.name ? `<div>${esc(w.title)}</div>` : '')}</div>
+            <div class="row">${w.reward ? `<span class="tag reward">${esc(text.wanted_reward || 'Reward')}: ${esc(currency)}${Number(w.reward).toLocaleString()}</span>` : ''}
+                ${w.danger ? `<span class="tag danger">${esc(text.wanted_danger || 'Armed and dangerous')}</span>` : ''}
+                ${w.plate ? `<span class="tag plate">${esc(w.plate)}</span>` : ''}</div></div></div>`;
+    }
+    function start() {
+        clearInterval(timer);
+        if (idx >= list.length) idx = 0;
+        render();
+        timer = setInterval(() => { if (list.length > 1) { idx = (idx + 1) % list.length; render(); } }, rotate * 1000);
+    }
+    window.addEventListener('message', e => {
+        let d = e.data;
+        if (typeof d === 'string') { try { d = JSON.parse(d); } catch (_) { return; } }
+        if (!d || d.action !== 'data') return;
+        list = Array.isArray(d.list) ? d.list : [];
+        text = d.text || {};
+        rotate = Math.max(3, d.rotate || 8);
+        currency = d.currency || '$';
+        start();
+    });
+    render();
+</script>
+</body>
+</html>

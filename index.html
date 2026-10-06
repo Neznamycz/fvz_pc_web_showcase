@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FiveZone Police PC - live demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/os.css">
+    <link rel="stylesheet" href="css/apps.css">
+    <link rel="stylesheet" href="css/panels.css">
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+    <!-- World prompt (own interaction, positioned from Lua) -->
+    <div id="world"></div>
+    <div id="prompt" class="hidden">
+        <div class="pr-title"></div>
+        <div class="pr-opts"></div>
+        <div class="pr-hint"><span><kbd>⇅</kbd> <span data-t="ui_hint_select">select</span></span><span><kbd id="pr-key">E</kbd> <span data-t="ui_hint_confirm">confirm</span></span></div>
+    </div>
+
+    <!-- Admin placement hint -->
+    <div id="placement" class="hidden">
+        <b id="pl-kind"></b>
+        <span><kbd>E</kbd> <span data-t="ui_pl_confirm">place</span></span>
+        <span><kbd>⇅</kbd> <span data-t="ui_pl_rotate">rotate (Shift = fine)</span></span>
+        <span><kbd>⌫</kbd> <span data-t="ui_pl_cancel">cancel</span></span>
+    </div>
+
+    <!-- Progress -->
+    <div id="progress" class="hidden">
+        <div class="l"><span class="lb"></span><span><kbd>X</kbd> <span data-t="ui_cancel">cancel</span></span></div>
+        <div class="bar-h"><i></i></div>
+    </div>
+
+    <!-- Desktop OS -->
+    <div id="os" class="hidden">
+        <div class="bezel" id="bezel">
+            <div class="screen" id="screen">
+                <div class="screen-shade"></div>
+                <div id="desktop">
+                    <div class="icons" id="icons"></div>
+                    <div class="widget" id="widget"></div>
+                </div>
+                <div id="windows"></div>
+                <div id="taskbar"></div>
+                <div id="start" class="hidden"></div>
+                <div id="notif-center" class="hidden"></div>
+                <div id="toasts"></div>
+                <div id="lock"></div>
+                <div id="boot" class="hidden"><div class="logo"></div><div class="bar"><i></i></div><div class="txt"></div></div>
+                <div id="modals"></div>
+            </div>
+            <div class="brand">FIVEZONE</div>
+            <div class="led"></div>
+        </div>
+    </div>
+
+    <!-- Admin panel (/fzpc) -->
+    <div id="admin" class="overlay hidden"></div>
+
+    <!-- Printer panel -->
+    <div id="printer" class="overlay hidden"></div>
+
+    <!-- Interrogation terminal -->
+    <div id="int" class="overlay hidden"></div>
+    <div id="rec" class="hidden"></div>
+
+    <!-- Public terminal, armory -->
+    <div id="pub" class="overlay hidden"></div>
+    <div id="arm" class="overlay hidden"></div>
+
+    <!-- Paper document -->
+    <div id="doc" class="overlay hidden"></div>
+
+    <!-- Training test (above everything, also above the desktop) -->
+    <div id="test" class="overlay hidden"></div>
+
+    <script src="js/core.js"></script>
+    <script src="js/sign.js"></script>
+    <script src="js/os.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/apps/cases.js"></script>
+    <script src="js/apps/forensics.js"></script>
+    <script src="js/apps/prisoners.js"></script>
+    <script src="js/apps/gallery.js"></script>
+    <script src="js/apps/warrants.js"></script>
+    <script src="js/apps/penal.js"></script>
+    <script src="js/apps/notes.js"></script>
+    <script src="js/apps/mail.js"></script>
+    <script src="js/apps/documents.js"></script>
+    <script src="js/apps/roster.js"></script>
+    <script src="js/apps/weapons.js"></script>
+    <script src="js/apps/shifts.js"></script>
+    <script src="js/apps/management.js"></script>
+    <script src="js/apps/audit.js"></script>
+    <script src="js/apps/settings.js"></script>
+    <script src="js/apps/chat.js"></script>
+    <script src="js/apps/stats.js"></script>
+    <script src="js/apps/interrogations.js"></script>
+    <script src="js/apps/court.js"></script>
+    <script src="js/apps/training.js"></script>
+    <script src="js/apps/ia.js"></script>
+    <script src="js/apps/desk.js"></script>
+    <script src="js/apps/armory.js"></script>
+    <script src="js/apps/help.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/printer.js"></script>
+    <script src="js/doc.js"></script>
+    <script src="js/interrogation.js"></script>
+    <script src="js/public.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/demo-data.js"></script>
+    <script src="js/demo.js"></script>
+</body>
+</html>
